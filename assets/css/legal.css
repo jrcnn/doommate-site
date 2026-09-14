@@ -93,6 +93,13 @@
     "doc";
 }
 
+/* Support: a single contact button */
+.support-cta { margin-top: 28px; }
+.doc .support-cta .btn { color: #fff; min-width: 300px; }
+@media (max-width: 640px) {
+  .doc .support-cta .btn { width: 100%; min-width: 0; }
+}
+
 /* ── Document ─────────────────────────────────────────── */
 
 .doc {

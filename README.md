@@ -1,12 +1,14 @@
 # doommate-site
 
-Static website for [Doommate](https://jrcnn.github.io/doommate-site/), hosted on GitHub Pages. No build step, no framework.
+Static website for [Doommate](https://doommate.com/), hosted on GitHub Pages. No build step, no framework.
 
 ```
 index.html            landing page
 privacy/index.html    Privacy Policy  → /privacy/
 terms/index.html      Terms of Use    → /terms/
 imprint/index.html    Imprint         → /imprint/
+support/index.html    Support         → /support/
+CNAME                 custom domain (doommate.com)
 404.html              self-contained not-found page
 assets/css/site.css   shared tokens (mirrors Doommate/DesignSystem/Theme.swift), header, footer
 assets/css/landing.css
@@ -27,12 +29,13 @@ Then open http://localhost:8765.
 
 Repository **Settings → Pages → Build and deployment → Deploy from a branch**, branch `main`, folder `/ (root)`. `.nojekyll` is present so files are served as-is.
 
-All internal links are relative, so the site works both at `https://jrcnn.github.io/doommate-site/` and on a custom domain. If a custom domain is added, update the absolute `og:url`, `og:image` and `canonical` URLs in `index.html`, `privacy/index.html` and `terms/index.html`.
+The site is served at `https://doommate.com/`, set by the `CNAME` file and under Settings → Pages → Custom domain. Internal links are relative. The absolute `og:url`, `og:image` and `canonical` URLs, and the 404 page's home link, assume the domain root.
 
 ## Editing
 
 - **Legal documents:** the `<article class="doc">` in `privacy/index.html` and `terms/index.html` is the document text. Edit it in place and update the “Last Updated” line. Each `<h2>` has an `id="section-N"` that the contents list links to.
 - **Imprint:** hand-written (not derived from the legal documents). Service-provider details under Hungary's e-commerce act; if a sole-proprietor registration number or tax number exists, add it to section 1. Every page's footer links to it.
+- **Support:** one button that opens an email to `doommateapp@gmail.com` with the subject "Doommate support". Every page's footer links to it; this is the page to give App Store Connect as the Support URL.
 - **App Store link:** both CTAs in `index.html` (hero and closing) are placeholder `<span class="btn">`s. Replace each with an `<a>` to the App Store listing once it is live (see the comment above the hero one).
 - **Dialog lines:** the hero terminal plays lines from the `#dialog-lines` JSON block at the bottom of `index.html`, copied verbatim from the app's `Resources/DialogLines/generic.json`, inline markup included.
 - **Block screen:** the shield in the feed section mirrors `DoommateShieldUI/ShieldConfigurationExtension.swift` — the signal-lost icon is that file's Core Graphics geometry as SVG, the subtitle is one of its `operationLines`, and the button reads `UNDERSTOOD`. Update both together.
