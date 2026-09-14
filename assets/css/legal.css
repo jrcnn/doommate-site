@@ -1,0 +1,234 @@
+/* Legal pages (/privacy, /terms) — the documents' own class names are kept intact */
+
+.legal {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 46rem);
+  grid-template-areas:
+    "toc head"
+    "toc doc";
+  justify-content: center;
+  column-gap: 64px;
+  padding-top: 56px;
+}
+.doc-head { grid-area: head; }
+.toc      { grid-area: toc; }
+.doc      { grid-area: doc; }
+
+/* ── Contents ─────────────────────────────────────────── */
+
+.toc {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.toc summary {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: 14px;
+}
+.toc summary::-webkit-details-marker { display: none; }
+.toc summary::after { content: ' ▾'; color: var(--text-dim); }
+.toc[open] summary::after { content: ' ▴'; }
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 12px;
+  border-left: 1px solid var(--border);
+}
+.toc li { margin: 0; }
+.toc a {
+  display: block;
+  padding: 5px 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  display: inline-block;
+  min-width: 2.2em;
+}
+
+/* Narrow: title first, then the contents, then the document */
+@media (max-width: 1024px) {
+  .legal {
+    grid-template-columns: minmax(0, 46rem);
+    grid-template-areas:
+      "head"
+      "toc"
+      "doc";
+    padding-top: 40px;
+  }
+  .toc {
+    position: static;
+    max-height: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 14px 18px 0;
+    margin: 0 0 32px;
+  }
+  .toc summary { margin-bottom: 14px; }
+  .toc ol { padding-bottom: 14px; }
+}
+
+/* Short documents (imprint): no contents list, one column at every width */
+.legal.legal--single {
+  grid-template-columns: minmax(0, 46rem);
+  grid-template-areas:
+    "head"
+    "doc";
+}
+
+/* ── Document ─────────────────────────────────────────── */
+
+.doc {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: #cfcdcb;
+}
+
+.doc-head .section-label { margin-bottom: 18px; }
+
+.doc-head h1 {
+  font-family: var(--sans);
+  font-size: clamp(32px, 4.4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0 0 14px;
+}
+
+.doc-head .updated {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin: 0 0 28px;
+}
+.doc-head .updated::before { content: '> '; color: var(--accent); }
+
+.doc .preamble {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.doc h2 {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin: 52px 0 16px;
+  scroll-margin-top: 88px;
+}
+.doc h2 .num { color: var(--accent); margin-right: 4px; }
+
+.doc h3 {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 30px 0 10px;
+}
+
+.doc p { margin: 0 0 14px; }
+
+.doc a { color: var(--accent); }
+
+.doc strong, .doc .field { font-weight: 600; color: var(--text-primary); }
+
+.doc .note {
+  color: var(--text-secondary);
+  font-size: 15.5px;
+  border-left: 2px solid var(--border);
+  padding-left: 14px;
+}
+
+.doc .caps { text-transform: uppercase; font-size: 0.94em; }
+
+.doc ul {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+.doc li { margin-bottom: 8px; padding-left: 4px; }
+.doc li:last-child { margin-bottom: 0; }
+.doc li::marker { color: var(--accent); }
+.doc ul.plain { list-style: square; }
+
+.doc code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  color: var(--cyan);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.doc .table-scroll {
+  overflow-x: auto;
+  margin: 0 0 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+}
+.doc table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.doc th, .doc td {
+  text-align: left;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.doc tr:last-child td { border-bottom: none; }
+.doc th {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--comment);
+  white-space: nowrap;
+}
+.doc td:first-child {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+.doc td { color: var(--text-secondary); }
+
+.doc hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 48px 0 0;
+}
+
+.doc-sibling {
+  font-family: var(--mono);
+  font-size: 14px;
+  margin-top: 28px;
+  color: var(--text-dim);
+}
+.doc-sibling a { text-decoration: none; }
+.doc-sibling a:hover { text-decoration: underline; }

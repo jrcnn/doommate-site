@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found · Doommate</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=JetBrains+Mono:wght@400;600&display=swap">
+  <!-- Self-contained: GitHub Pages serves this file for any missing path, so relative asset URLs can't be trusted. -->
+  <style>
+    :root {
+      --bg: #0a0a0f; --accent: #E85D3A; --text: #E8E6E3; --text-2: #8A8A9A;
+      --mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+      --sans: 'Inter', system-ui, -apple-system, sans-serif;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      background: var(--bg); color: var(--text); font-family: var(--sans); padding: 32px 20px;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(232,93,58,.018) 2px, rgba(232,93,58,.018) 4px);
+    }
+    main { text-align: center; }
+    h1 {
+      font-weight: 800; font-size: 96px; line-height: 1; margin: 0;
+      letter-spacing: .12em; padding-left: .12em; /* balances trailing letter-spacing */
+    }
+    .rule { width: 72px; height: 3px; background: var(--accent); margin: 24px auto; }
+    p { font-family: var(--mono); font-size: 15px; color: var(--text-2); margin: 0 0 36px; }
+    a {
+      display: inline-block; padding: 16px 40px; border-radius: 12px; background: var(--accent);
+      color: #fff; text-decoration: none; font-family: var(--mono); font-weight: 600; font-size: 15px;
+      letter-spacing: 3px; padding-left: 43px; text-transform: uppercase;
+    }
+    a:focus-visible { outline: 2px solid #4ECDC4; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>404</h1>
+    <div class="rule" aria-hidden="true"></div>
+    <p>Page not found.</p>
+    <a id="home" href="/doommate-site/">Back to home</a>
+  </main>
+  <script>
+    // Works on the project URL (/doommate-site/…) and on a custom domain (/…).
+    var base = location.pathname.indexOf('/doommate-site/') === 0 ? '/doommate-site/' : '/';
+    document.getElementById('home').href = base;
+  </script>
+</body>
+</html>

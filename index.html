@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doommate</title>
+  <meta name="description" content="Doommate is a performance monitor for your life. It locks away the apps that consume your day and hands your screen time back only in exchange for real effort.">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Doommate">
+  <meta property="og:description" content="A performance monitor for your life.">
+  <meta property="og:url" content="https://jrcnn.github.io/doommate-site/">
+  <meta property="og:image" content="https://jrcnn.github.io/doommate-site/assets/img/icon-512.png">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/img/icon-64.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/landing.css">
+</head>
+<body>
+  <main>
+
+    <!-- ── Hero ─────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="screen-label reveal">System online</p>
+          <h1 class="wordmark reveal" style="--i:1">Doommate</h1>
+          <div class="wordmark-rule reveal" style="--i:2" aria-hidden="true"></div>
+          <p class="tagline reveal" style="--i:3">A performance monitor for your life.</p>
+
+          <div class="terminal-msg dialog reveal" style="--i:4" id="dialog" role="button" tabindex="0" aria-label="Doommate. Press to hear another line.">
+            <div class="prompt">&gt; doommate</div>
+            <p class="sr-only" id="dialog-plain" aria-live="polite">An octopus has nine brains, and no phone. I will simply allow you to make your own conclusion.</p>
+            <p class="msg-text" id="dialog-text" aria-hidden="true">An octopus has nine brains, and no phone. I will simply allow you to make your own conclusion.<span class="cursor"></span></p>
+          </div>
+
+          <div class="hero-cta reveal" style="--i:5">
+            <!-- APP STORE: when the listing is live, replace this <span> with
+                 <a class="btn btn-primary" href="https://apps.apple.com/app/idXXXXXXXXXX"> (same for the closing button) -->
+            <span class="btn btn-primary">
+              <span class="btn-text">▶ Coming soon</span>
+              <span class="btn-sub">to the App Store · iPhone</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" style="--i:3">
+          <div class="phone">
+            <img src="assets/img/operation.webp" alt="Doommate during an active operation: days remaining, today's activity against the daily goal, and a button to log a directive." width="660" height="1434">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── The feed ─────────────────────────────────────── -->
+    <!-- The block screen mirrors DoommateShieldUI/ShieldConfigurationExtension.swift:
+         signal-lost icon geometry, DOOMMATE title, one of the operation lines, UNDERSTOOD. -->
+    <section class="chapter" id="feed">
+      <div class="wrap feedshow">
+        <h2 class="headline feed-headline reveal">
+          <span>The feed never ends.</span>
+          <span class="headline-2">Doommate ends it.</span>
+        </h2>
+
+        <div class="phone feed-phone reveal" aria-label="An endless social feed, stopped by Doommate's block screen." role="img">
+          <div class="screen">
+            <div class="island" aria-hidden="true"></div>
+            <div class="feed-scroll" aria-hidden="true"><div class="feed-list"></div></div>
+
+            <div class="shield" aria-hidden="true">
+              <svg class="shield-icon" viewBox="0 0 300 300">
+                <defs>
+                  <radialGradient id="shield-glow" cx="150" cy="150" r="150" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#C0392B" stop-opacity=".22"></stop>
+                    <stop offset="1" stop-color="#C0392B" stop-opacity="0"></stop>
+                  </radialGradient>
+                  <mask id="shield-tears" maskUnits="userSpaceOnUse" x="0" y="0" width="300" height="300">
+                    <rect width="300" height="300" fill="#fff"></rect>
+                    <rect y="115" width="300" height="7.5" fill="#000"></rect>
+                    <rect y="165" width="300" height="10" fill="#000"></rect>
+                    <rect y="200" width="300" height="5" fill="#000"></rect>
+                  </mask>
+                </defs>
+                <g mask="url(#shield-tears)">
+                  <circle cx="150" cy="150" r="150" fill="url(#shield-glow)"></circle>
+                  <g fill="none" stroke-width="25" stroke-linecap="butt">
+                    <path d="M80 72.5 220 212.5M220 72.5 80 212.5" stroke="#4ECDC4" stroke-opacity=".5"></path>
+                    <path d="M80 90 220 230M220 90 80 230" stroke="#8E2A1F" stroke-opacity=".6"></path>
+                    <path d="M80 80 220 220M220 80 80 220" stroke="#C0392B"></path>
+                  </g>
+                </g>
+                <g fill="#C0392B" fill-opacity=".55">
+                  <rect x="45" y="122.5" width="40" height="7.5"></rect>
+                  <rect x="215" y="122.5" width="40" height="7.5"></rect>
+                  <rect x="65" y="175" width="30" height="10"></rect>
+                  <rect x="205" y="175" width="30" height="10"></rect>
+                </g>
+                <path d="M25 65V25H65M235 25H275V65M275 235V275H235M65 275H25V235" fill="none" stroke="#C0392B" stroke-opacity=".35" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"></path>
+              </svg>
+              <p class="shield-title">DOOMMATE</p>
+              <p class="shield-sub">The feed will survive without you. It always does.</p>
+              <span class="shield-btn">UNDERSTOOD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── The deal ─────────────────────────────────────── -->
+    <section class="chapter" id="deal">
+      <div class="wrap">
+        <h2 class="headline reveal">You earn your way back in.</h2>
+
+        <div class="deal">
+          <div class="beats">
+            <article class="beat" data-step="0">
+              <div class="beat-copy reveal">
+                <p class="beat-tag"><span>01</span> lock</p>
+                <h3>Lock the offenders.</h3>
+                <p>Pick the apps that eat your day. They stay locked for the whole operation.</p>
+              </div>
+              <div class="phone beat-phone reveal"><img src="assets/img/targets.webp" alt="Operation setup: picking the apps and categories to lock." width="660" height="1434" loading="lazy"></div>
+            </article>
+            <article class="beat" data-step="1">
+              <div class="beat-copy reveal">
+                <p class="beat-tag"><span>02</span> earn</p>
+                <h3>Pay in effort.</h3>
+                <p>Start a timer for anything worth doing. Every finished minute earns clearance.</p>
+              </div>
+              <div class="phone beat-phone reveal"><img src="assets/img/directive.webp" alt="A directive timer counting down while reading a book." width="660" height="1434" loading="lazy"></div>
+            </article>
+            <article class="beat" data-step="2">
+              <div class="beat-copy reveal">
+                <p class="beat-tag cyan"><span>03</span> spend</p>
+                <h3>Spend it on your terms.</h3>
+                <p>Cash in clearance to unlock your apps for a while. End early and the rest comes back.</p>
+              </div>
+              <div class="phone beat-phone reveal"><img src="assets/img/clearance.webp" alt="A clearance session counting down with apps unlocked." width="660" height="1434" loading="lazy"></div>
+            </article>
+          </div>
+
+          <div class="stage" aria-hidden="true">
+            <div class="phone">
+              <div class="stage-screens">
+                <img class="active" src="assets/img/targets.webp" alt="" width="660" height="1434" loading="lazy">
+                <img src="assets/img/directive.webp" alt="" width="660" height="1434" loading="lazy">
+                <img src="assets/img/clearance.webp" alt="" width="660" height="1434" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Grades ───────────────────────────────────────── -->
+    <!-- Consistent with AppRouter.computeGrade: abandoned = F; S needs ≥95% of goal AND Brutal AND ≥10 days. -->
+    <section class="chapter" id="grades">
+      <div class="wrap">
+        <h2 class="headline reveal">Every operation gets a grade.</h2>
+
+        <div class="records">
+          <article class="record card reveal" style="--i:0">
+            <header>
+              <div>
+                <p class="rec-kicker">operation</p>
+                <h3>STONEHOLD</h3>
+                <p class="rec-meta">14 days · Brutal</p>
+              </div>
+              <span class="grade g-s" aria-label="Grade S">S</span>
+            </header>
+            <div class="rec-stats">
+              <div><b class="c-cyan">44.7<small>h</small></b><span>reclaimed</span></div>
+              <div><b class="c-green">14/14</b><span>days hit</span></div>
+              <div><b>5.8<small>h</small></b><span>earned</span></div>
+            </div>
+          </article>
+          <article class="record card reveal" style="--i:1">
+            <header>
+              <div>
+                <p class="rec-kicker">operation</p>
+                <h3>ASHFOX</h3>
+                <p class="rec-meta">30 days · Balanced</p>
+              </div>
+              <span class="grade g-b" aria-label="Grade B">B</span>
+            </header>
+            <div class="rec-stats">
+              <div><b class="c-cyan">38.4<small>h</small></b><span>reclaimed</span></div>
+              <div><b class="c-yellow">19/30</b><span>days hit</span></div>
+              <div><b>9.6<small>h</small></b><span>earned</span></div>
+            </div>
+          </article>
+          <article class="record record--failed card reveal" style="--i:2">
+            <header>
+              <div>
+                <p class="rec-kicker">operation</p>
+                <h3>COLDRAVEN</h3>
+                <p class="rec-meta">abandoned day 7 · Brutal</p>
+              </div>
+              <span class="grade g-f" aria-label="Grade F">F</span>
+            </header>
+            <div class="rec-stats">
+              <div><b class="c-cyan">6.2<small>h</small></b><span>reclaimed</span></div>
+              <div><b class="c-red">2/21</b><span>days hit</span></div>
+              <div><b>1.6<small>h</small></b><span>earned</span></div>
+            </div>
+          </article>
+        </div>
+        <p class="sample reveal">sample records</p>
+      </div>
+    </section>
+
+    <!-- ── Payoff ───────────────────────────────────────── -->
+    <section class="chapter" id="payoff">
+      <div class="wrap">
+        <h2 class="headline reveal">Watch the hours come back.</h2>
+
+        <div class="reclaim card reveal" id="reclaim">
+          <p class="rec-label">screen time reclaimed</p>
+          <p class="reclaim-value"><span id="reclaimed">100.4</span><small>hrs</small></p>
+          <p class="reclaim-sub">across 5 operations</p>
+
+          <div class="heat" aria-hidden="true">
+            <span class="dow">m</span><span class="dow">t</span><span class="dow">w</span><span class="dow">t</span><span class="dow">f</span><span class="dow">s</span><span class="dow">s</span>
+          </div>
+        </div>
+        <p class="sample reveal">sample record</p>
+      </div>
+    </section>
+
+    <!-- ── Closing ──────────────────────────────────────── -->
+    <section class="closing">
+      <div class="wrap">
+        <p class="screen-label dim reveal">◇ awaiting orders ◇</p>
+        <span class="btn btn-primary reveal" style="--i:1">
+          <span class="btn-text">▶ Coming soon</span>
+          <span class="btn-sub">to the App Store · iPhone</span>
+        </span>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="sig">doommate <span class="ver">v1.0</span> — © 2026 Levente Bokor. All rights reserved.</p>
+      <nav aria-label="Footer">
+        <a href="privacy/">Privacy Policy</a>
+        <a href="terms/">Terms of Use</a>
+        <a href="imprint/">Imprint</a>
+        <a href="mailto:doommateapp@gmail.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Lines copied verbatim from Doommate/Resources/DialogLines/generic.json.
+       Inline markup: [p:ms] pause · [s:preset|ms] speed · [c:style] colour · [h:*] haptic (ignored on web) · [default] reset -->
+  <script type="application/json" id="dialog-lines">
+  [
+    "An octopus has nine brains,[p:300] and no phone.[p:800] I will simply allow you to make your own conclusion.",
+    "I think pigeons know something.[p:800] Not everything,[p:300] obviously,[p:300] but enough to make their confidence suspicious.",
+    "You know what's underrated?[p:800] Finishing something badly,[p:300] as opposed to [c:emphasis][h:medium][s:slow]dreaming[default] about finishing something perfectly."
+  ]
+  </script>
+  <script src="assets/js/landing.js" defer></script>
+</body>
+</html>
