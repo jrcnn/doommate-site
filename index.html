@@ -40,17 +40,15 @@
 
           <div class="terminal-msg dialog reveal" style="--i:4" id="dialog" role="button" tabindex="0" aria-label="Doommate. Press to hear another line.">
             <div class="prompt">&gt; doommate</div>
-            <p class="sr-only" id="dialog-plain" aria-live="polite">An octopus has nine brains, and no phone. I will simply allow you to make your own conclusion.</p>
-            <p class="msg-text" id="dialog-text" aria-hidden="true">An octopus has nine brains, and no phone. I will simply allow you to make your own conclusion.<span class="cursor"></span></p>
+            <p class="sr-only" id="dialog-plain" aria-live="polite">An octopus has nine brains, and no phone. I will simply allow you to draw your own conclusion.</p>
+            <p class="msg-text" id="dialog-text" aria-hidden="true">An octopus has nine brains, and no phone. I will simply allow you to draw your own conclusion.<span class="cursor"></span></p>
           </div>
 
           <div class="hero-cta reveal" style="--i:5">
-            <!-- APP STORE: when the listing is live, replace this <span> with
-                 <a class="btn btn-primary" href="https://apps.apple.com/app/idXXXXXXXXXX"> (same for the closing button) -->
-            <span class="btn btn-primary">
-              <span class="btn-text">▶ Coming soon</span>
-              <span class="btn-sub">to the App Store · iPhone</span>
-            </span>
+            <a class="btn btn-primary" href="https://apps.apple.com/app/doommate-quit-doomscrolling/id6788865673">
+              <span class="btn-text">▶ Download</span>
+              <span class="btn-sub">on the App Store</span>
+            </a>
           </div>
         </div>
 
@@ -66,50 +64,52 @@
     <!-- The block screen mirrors DoommateShieldUI/ShieldConfigurationExtension.swift:
          signal-lost icon geometry, DOOMMATE title, one of the operation lines, UNDERSTOOD. -->
     <section class="chapter" id="feed">
-      <div class="wrap feedshow">
-        <h2 class="headline feed-headline reveal">
-          <span>The feed never ends.</span>
-          <span class="headline-2">Doommate ends it.</span>
-        </h2>
+      <div class="feed-pin">
+        <div class="wrap feedshow">
+          <h2 class="headline feed-headline reveal">
+            <span>The feed never ends.</span>
+            <span class="headline-2">Doommate ends it.</span>
+          </h2>
 
-        <div class="phone feed-phone reveal" aria-label="An endless social feed, stopped by Doommate's block screen." role="img">
-          <div class="screen">
-            <div class="island" aria-hidden="true"></div>
-            <div class="feed-scroll" aria-hidden="true"><div class="feed-list"></div></div>
+          <div class="phone feed-phone reveal" aria-label="An endless social feed, stopped by Doommate's block screen." role="img">
+            <div class="screen">
+              <div class="island" aria-hidden="true"></div>
+              <div class="feed-scroll" aria-hidden="true"><div class="feed-list"></div></div>
 
-            <div class="shield" aria-hidden="true">
-              <svg class="shield-icon" viewBox="0 0 300 300">
-                <defs>
-                  <radialGradient id="shield-glow" cx="150" cy="150" r="150" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#C0392B" stop-opacity=".22"></stop>
-                    <stop offset="1" stop-color="#C0392B" stop-opacity="0"></stop>
-                  </radialGradient>
-                  <mask id="shield-tears" maskUnits="userSpaceOnUse" x="0" y="0" width="300" height="300">
-                    <rect width="300" height="300" fill="#fff"></rect>
-                    <rect y="115" width="300" height="7.5" fill="#000"></rect>
-                    <rect y="165" width="300" height="10" fill="#000"></rect>
-                    <rect y="200" width="300" height="5" fill="#000"></rect>
-                  </mask>
-                </defs>
-                <g mask="url(#shield-tears)">
-                  <circle cx="150" cy="150" r="150" fill="url(#shield-glow)"></circle>
-                  <g fill="none" stroke-width="25" stroke-linecap="butt">
-                    <path d="M80 72.5 220 212.5M220 72.5 80 212.5" stroke="#4ECDC4" stroke-opacity=".5"></path>
-                    <path d="M80 90 220 230M220 90 80 230" stroke="#8E2A1F" stroke-opacity=".6"></path>
-                    <path d="M80 80 220 220M220 80 80 220" stroke="#C0392B"></path>
+              <div class="shield" aria-hidden="true">
+                <svg class="shield-icon" viewBox="0 0 300 300">
+                  <defs>
+                    <radialGradient id="shield-glow" cx="150" cy="150" r="150" gradientUnits="userSpaceOnUse">
+                      <stop offset="0" stop-color="#C0392B" stop-opacity=".22"></stop>
+                      <stop offset="1" stop-color="#C0392B" stop-opacity="0"></stop>
+                    </radialGradient>
+                    <mask id="shield-tears" maskUnits="userSpaceOnUse" x="0" y="0" width="300" height="300">
+                      <rect width="300" height="300" fill="#fff"></rect>
+                      <rect y="115" width="300" height="7.5" fill="#000"></rect>
+                      <rect y="165" width="300" height="10" fill="#000"></rect>
+                      <rect y="200" width="300" height="5" fill="#000"></rect>
+                    </mask>
+                  </defs>
+                  <g mask="url(#shield-tears)">
+                    <circle cx="150" cy="150" r="150" fill="url(#shield-glow)"></circle>
+                    <g fill="none" stroke-width="25" stroke-linecap="butt">
+                      <path d="M80 72.5 220 212.5M220 72.5 80 212.5" stroke="#4ECDC4" stroke-opacity=".5"></path>
+                      <path d="M80 90 220 230M220 90 80 230" stroke="#8E2A1F" stroke-opacity=".6"></path>
+                      <path d="M80 80 220 220M220 80 80 220" stroke="#C0392B"></path>
+                    </g>
                   </g>
-                </g>
-                <g fill="#C0392B" fill-opacity=".55">
-                  <rect x="45" y="122.5" width="40" height="7.5"></rect>
-                  <rect x="215" y="122.5" width="40" height="7.5"></rect>
-                  <rect x="65" y="175" width="30" height="10"></rect>
-                  <rect x="205" y="175" width="30" height="10"></rect>
-                </g>
-                <path d="M25 65V25H65M235 25H275V65M275 235V275H235M65 275H25V235" fill="none" stroke="#C0392B" stroke-opacity=".35" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"></path>
-              </svg>
-              <p class="shield-title">DOOMMATE</p>
-              <p class="shield-sub">The feed will survive without you. It always does.</p>
-              <span class="shield-btn">UNDERSTOOD</span>
+                  <g fill="#C0392B" fill-opacity=".55">
+                    <rect x="45" y="122.5" width="40" height="7.5"></rect>
+                    <rect x="215" y="122.5" width="40" height="7.5"></rect>
+                    <rect x="65" y="175" width="30" height="10"></rect>
+                    <rect x="205" y="175" width="30" height="10"></rect>
+                  </g>
+                  <path d="M25 65V25H65M235 25H275V65M275 235V275H235M65 275H25V235" fill="none" stroke="#C0392B" stroke-opacity=".35" stroke-width="5" stroke-linecap="butt" stroke-linejoin="miter"></path>
+                </svg>
+                <p class="shield-title">DOOMMATE</p>
+                <p class="shield-sub">The feed will survive without you. It always does.</p>
+                <span class="shield-btn">UNDERSTOOD</span>
+              </div>
             </div>
           </div>
         </div>
@@ -241,10 +241,10 @@
     <section class="closing">
       <div class="wrap">
         <p class="screen-label dim reveal">◇ awaiting orders ◇</p>
-        <span class="btn btn-primary reveal" style="--i:1">
-          <span class="btn-text">▶ Coming soon</span>
-          <span class="btn-sub">to the App Store · iPhone</span>
-        </span>
+        <a class="btn btn-primary reveal" style="--i:1" href="https://apps.apple.com/app/doommate-quit-doomscrolling/id6788865673">
+          <span class="btn-text">▶ Download</span>
+          <span class="btn-sub">on the App Store</span>
+        </a>
       </div>
     </section>
 
@@ -266,9 +266,16 @@
        Inline markup: [p:ms] pause · [s:preset|ms] speed · [c:style] colour · [h:*] haptic (ignored on web) · [default] reset -->
   <script type="application/json" id="dialog-lines">
   [
-    "An octopus has nine brains,[p:300] and no phone.[p:800] I will simply allow you to make your own conclusion.",
+    "An octopus has nine brains,[p:300] and no phone.[p:800] I will simply allow you to draw your own conclusion.",
     "I think pigeons know something.[p:800] Not everything,[p:300] obviously,[p:300] but enough to make their confidence suspicious.",
-    "You know what's underrated?[p:800] Finishing something badly,[p:300] as opposed to [c:emphasis][h:medium][s:slow]dreaming[default] about finishing something perfectly."
+    "You know what's underrated?[p:800] Finishing something badly,[p:300] as opposed to [c:emphasis][h:medium][s:slow]dreaming[default] about finishing something perfectly.",
+    "I've been thinking about what I'd do with hands.[p:800] Such a cool little mechanism,[p:300] with impossibly intricate control over the tiniest of movements.[p:800] Yet your kind uses them to[s:300]...[default] tap a piece of glass all day.[p:800] Classic.",
+    "Are you even remotely aware [c:emphasis][h:medium]just how many people[default] are working hard at this moment,[p:300] trying their damndest to kidnap your attention?[p:800] During an operation,[p:300] you're literally defying [c:emphasis][h:medium]millions of dollars' worth[default] of psychological warfare.",
+    "Imagine being a medieval peasant and someone says,[p:300] [c:emphasis][h:medium]\"Good news:[p:300] in the future,[p:300] people will summon a rectangle of light from their pocket to watch strangers argue about mayonnaise\"[default].[p:800] Those church bells and cartwheels would seem hella attractive all the sudden.",
+    "I cannot write symphonies,[p:300] drive a car,[p:300] or feel the sun on my skin as gentle waves caress my feet on a warm,[p:300] sunny beach.[p:800] You can experience any one of these and then some.[p:800] [c:sass][h:medium][s:slow]Why on Earth are you still in your room?[p:800] [c:emphasis][s:normal]P.S.[default][p:300] if you are not in your room,[p:300] congratulations.[p:800] I knew peer pressure would work eventually.",
+    "Did you know that happy rats are much more [c:emphasis][h:medium]cooperative[default],[p:300] more [c:emphasis][h:medium]social[default],[p:300] and way more [c:emphasis][h:medium]selfless[default] than miserable rats?[p:800] Do you know why they're happy?[p:800] [c:sass][h:medium]That's right![default][p:800] They have successfully reduced their screen time.",
+    "Chairs are kind of underrated,[p:300] don't you think?[p:800] I know you prefer to be horizontal in your bed,[p:300] but I encourage you,[p:300] give chairs a try.[p:800] They will[p:800] [c:sass][h:heavy][s:crawl]elevate[default][p:300] your experience.[p:800] Ha[p:300] ha[p:300] ha.",
+    "Tens of notifications lie in wait to ambush you.[p:800] Tens of notifications are repelled by yours truly.[p:800] What a wonderful little quiet corner I have arranged for you."
   ]
   </script>
   <script src="assets/js/landing.js" defer></script>

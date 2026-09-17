@@ -107,6 +107,14 @@
   .hero-visual .phone { width: 250px; }
   /* Single column: the button spans the dialog's width so their edges line up */
   .hero-cta .btn { width: 100%; max-width: 560px; min-width: 0; }
+  /* The dialog resizes to each line here, so it goes below the button to keep the button still */
+  .hero-copy { display: flex; flex-direction: column; }
+  .hero-cta { order: 1; margin-top: 0; }
+  .dialog { order: 2; margin-top: 32px; }
+  .dialog .msg-text { transition: min-height 0.4s ease; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dialog .msg-text { transition: none; }
 }
 
 /* ── Chapters ─────────────────────────────────────────── */
@@ -287,6 +295,32 @@
 @media (max-width: 900px) {
   .feedshow { grid-template-columns: 1fr; gap: 40px; }
   .feed-phone { width: 260px; }
+}
+
+/* Pinned: the section is two screens tall and its content stays centred on screen while it
+   scrolls through, so nobody gets past the feed before Doommate ends it (see landing.js).
+   The phone shrinks on short screens so the pinned view always fits. */
+@media (prefers-reduced-motion: no-preference) {
+  .js #feed { height: 200vh; height: 200svh; padding-top: 0; }
+  .js #feed .feed-pin {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+  .js #feed .feedshow { width: 100%; }
+  .js #feed .feed-phone { width: min(300px, calc((100svh - 64px) * 0.44)); }
+}
+/* Page scrolling is paused for a moment while the feed is shut off (landing.js).
+   The stable gutter keeps the layout from shifting when the scrollbar goes away. */
+html { scrollbar-gutter: stable; }
+html.feed-hold { overflow: hidden; }
+
+@media (prefers-reduced-motion: no-preference) and (max-width: 900px) {
+  .js #feed .feedshow { gap: 24px; }
+  .js #feed .feed-phone { width: min(260px, calc((100svh - 230px) * 0.44)); }
 }
 
 /* ── The deal ─────────────────────────────────────────── */

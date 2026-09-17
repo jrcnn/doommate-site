@@ -90,26 +90,34 @@
     }
     order.unshift(lines[0]);
 
-    // Reserve the height of the longest line so the page never shifts as lines change.
-    function reserveHeight() {
+    // Two columns: reserve the tallest line so nothing around the box ever moves.
+    // Single column: the box sits below the button, so it fits each line instead
+    // (a phone-width box sized for the longest line leaves short lines floating in empty space).
+    var singleColumn = window.matchMedia('(max-width: 900px)');
+    var current = order[0];
+
+    function heightOf(list) {
       var probe = out.cloneNode(false);
       probe.removeAttribute('id');
       probe.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;min-height:0;width:' + out.clientWidth + 'px';
       out.parentNode.appendChild(probe);
       var max = 0;
-      lines.forEach(function (ops) {
+      list.forEach(function (ops) {
         probe.textContent = plain(ops) + '█';
         max = Math.max(max, probe.offsetHeight);
       });
       probe.remove();
-      out.style.minHeight = max + 'px';
+      return max;
     }
-    reserveHeight();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(reserveHeight);
+    function fitHeight() {
+      out.style.minHeight = heightOf(singleColumn.matches ? [current] : lines) + 'px';
+    }
+    fitHeight();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeight);
     var resizeTimer;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(reserveHeight, 150);
+      resizeTimer = setTimeout(fitHeight, 150);
     });
 
     var idx = 0;
@@ -138,6 +146,8 @@
     function play(ops) {
       clearTimeout(timer);
       live.textContent = plain(ops);
+      current = ops;
+      fitHeight();
       if (reduceMotion) { renderFull(ops); typing = false; return; }
 
       out.textContent = '';
@@ -211,10 +221,71 @@
     }
     feedList.innerHTML = html;
 
-    // Let the feed run for a moment once it's on screen, then drop the block screen on it.
-    whenRevealed(feed.querySelector('.feed-phone'), function () {
-      setTimeout(function () { feed.classList.add('ended'); }, reduceMotion ? 0 : 2400);
-    });
+    // The section is pinned while it scrolls through (landing.css). The moment a visitor scrolls
+    // into the pin, page scrolling is switched off briefly (html.feed-hold) while the feed runs and
+    // Doommate ends it, so the animation plays at its own pace however fast they scroll. Turning
+    // scrolling off stops a fling where it is instead of fighting it, and since the hold starts at
+    // the top of the pinned range, a full screen of pinned scrolling is still left afterwards.
+    // A visitor who stops with the phone in view before the pin gets the ending after a short wait.
+    var FEED_RUN_MS = 1200;   // feed keeps scrolling this long after the hold starts
+    var HOLD_MS = 2200;       // run + block screen and headline transitions
+    var DWELL_MS = 1800;
+
+    var feedPhone = feed.querySelector('.feed-phone');
+    var root = document.documentElement;
+    var state = 'waiting';    // waiting → holding → done
+    var endTimer = null;
+    var lastY = window.scrollY;
+
+    var endFeed = function () {
+      clearTimeout(endTimer);
+      feed.classList.add('ended');
+      if (state === 'waiting') finish();
+    };
+
+    var startHold = function () {
+      state = 'holding';
+      root.classList.add('feed-hold');
+      if (!feed.classList.contains('ended')) {
+        clearTimeout(endTimer);
+        endTimer = setTimeout(endFeed, FEED_RUN_MS);
+      }
+      setTimeout(finish, HOLD_MS);
+    };
+
+    var finish = function () {
+      state = 'done';
+      root.classList.remove('feed-hold');
+      window.removeEventListener('scroll', checkFeed);
+      window.removeEventListener('resize', checkFeed);
+    };
+
+    var checkFeed = function () {
+      if (state !== 'waiting') return;
+      var y = window.scrollY;
+      var top = feed.getBoundingClientRect().top + y;
+      var pinEnd = top + feed.offsetHeight - window.innerHeight;
+      if (y >= top) {
+        // Scrolled into the pin from above: hold. Already inside it, or jumped clean past it
+        // (a reload or restored scroll position): nothing to hold for, just show the ending.
+        if (lastY < top && y <= pinEnd) startHold();
+        else endFeed();
+      } else {
+        var p = feedPhone.getBoundingClientRect();
+        var inView = p.top >= 0 && p.bottom <= window.innerHeight;
+        if (inView && !endTimer) endTimer = setTimeout(endFeed, DWELL_MS);
+        else if (!inView && endTimer) { clearTimeout(endTimer); endTimer = null; }
+      }
+      lastY = y;
+    };
+
+    if (reduceMotion) {
+      feed.classList.add('ended');
+    } else {
+      window.addEventListener('scroll', checkFeed, { passive: true });
+      window.addEventListener('resize', checkFeed);
+      checkFeed();
+    }
   }
 
   // ── The deal: pinned phone follows the beat in view ─────
